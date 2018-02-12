@@ -30,7 +30,7 @@ app.get('/',(req,res)=>{
 });
 
 app.get('/HTMLfiles',(req,res)=>{
-	res.sendFile(__dirname+'/frontendWorks/HTMLfiles/index.html');
+	res.sendFile(__dirname+'/frontendWorks/HTMLfiles/index2.html');
 });
 
 app.listen( process.env.PORT || config.SERVER.PORT ,
