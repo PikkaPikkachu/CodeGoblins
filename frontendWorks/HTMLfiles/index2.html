@@ -48,6 +48,7 @@ http://www.templatemo.com/tm-506-tinker
                         <li><a href="#" class="scroll-link" data-id="portfolio">Portfolio</a></li>
                         <li><a href="#" class="scroll-link" data-id="blog">Blog</a></li>
                         <li><a href="#" class="scroll-link" data-id="contact-us">Contact Us</a></li>
+                        <li><a style="cursor: pointer" id="login" class="scroll-link" data-id="contact-us">Login</a></li>
                     </ul>
                 </div>
                 <!--/.navbar-collapse-->
@@ -452,5 +453,10 @@ http://www.templatemo.com/tm-506-tinker
         };
     }
     </script>
+<script>
+    $('#login').click(function () {
+      window.location.href = '/login'
+    })
+</script>
 </body>
 </html>
