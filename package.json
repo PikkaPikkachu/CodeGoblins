@@ -20,6 +20,7 @@
   "dependencies": {
     "express": "^4.16.2",
     "mongodb": "^2.2.33",
+    "pdf.js-extract": "0.0.8",
     "phantomjs": "^2.1.7",
     "scraperjs": "^1.2.0"
   }

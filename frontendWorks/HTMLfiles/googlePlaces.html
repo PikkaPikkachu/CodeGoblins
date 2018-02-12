@@ -51,7 +51,7 @@
 		var infowindow;
 		
 		function initMap() {
-			var pyrmont = {lat: 28.614, lng: 77.312};
+			var pyrmont = {lat: 39.904, lng: 116.407};
 			
 			map = new google.maps.Map(document.getElementById('map'), {
 				center: pyrmont,
@@ -62,8 +62,8 @@
 			var service = new google.maps.places.PlacesService(map);
 			service.nearbySearch({
 				location: pyrmont,
-				radius: 15000,
-				type: ['stadium']
+				radius: 9000,
+				type: ['zoo']
 			}, callback);
 		}
 		
