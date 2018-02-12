@@ -174,7 +174,7 @@
     <div id="blog" class="light-wrapper">
       <div class="container inner">
         <div class="title">
-          <h2 class="section-title text-center">Upload A Resume or Job Opening</h2>
+          <h2 style="position: relative;right: 100px" class="section-title text-center">Upload A Resume or Job Opening</h2>
         </div>
         
         <div class="row">
@@ -214,15 +214,23 @@
             
             <div class="form-row">
               <div class="col-md-5 mt-5 mb-3">
-                <button type="submit" style="margin-bottom: 10px" id="submit" class="col-md-offset-4 col-md-4 mt-5 btn btn-primary">Resume</button>
+                <label class="col-md-offset-4 col-md-4 mt-5 btn btn-primary" for="uploadResume" style="position:relative;left:200px;margin-bottom: 10px">Resume</label>
+                <input id="uploadResume" type="file" style="display:none;position:relative;bottom: 40px;left:400px;margin-bottom: 10px"></input>
               </div>
+              <br>
+              <br>
+              <br>
+              <br>
               <div class="col-md-5 mt-5 mb-3">
-                <button class=" col-md-4 mt-5 btn btn-primary" style="margin-bottom: 10px">Job Opening</button>
+                <label class="col-md-offset-4 col-md-4 mt-5 btn btn-primary" for="uploadJob" style="position:relative;left:200px;margin-bottom: 10px">Job opening</label>
+                <input id="uploadJob" type="file" style="display:none;position:relative;bottom: 40px;left:400px;margin-bottom: 10px"></input>
               </div>
 
             </div>
           
           </form>
+          <canvas style="position: relative;top:80px;right: 300px;" id="the-canvas"></canvas>
+
         </div>
         <!-- /.blog -->
       </div>
@@ -234,6 +242,9 @@
   
   </div>
 </div>
+<script src="//mozilla.github.io/pdf.js/build/pdf.js"></script>
+
+
 
 
 </body>
@@ -281,5 +292,70 @@
 </script>
 <script>
 	$('#displayName').text(JSON.parse(localStorage.getItem('userData')).data.name);
+</script>
+<script>
+  // If absolute URL from the remote server is provided, configure the CORS
+  // header on that server.
+  $('#uploadResume').change(function () {
+    console.log(this.files[0]);
+  });
+  var url = '//cdn.mozilla.net/pdfjs/tracemonkey.pdf';
+
+  // The workerSrc property shall be specified.
+  PDFJS.workerSrc = '//mozilla.github.io/pdf.js/build/pdf.worker.js';
+
+  var pdfDoc = null,
+    pageNum = 1,
+    pageRendering = false,
+    pageNumPending = null,
+    scale = 0.8,
+    canvas = document.getElementById('the-canvas'),
+    ctx = canvas.getContext('2d');
+
+  /**
+   * Get page info from document, resize canvas accordingly, and render page.
+   * @param num Page number.
+   */
+  function renderPage(num) {
+    pageRendering = true;
+    // Using promise to fetch the page
+    pdfDoc.getPage(num).then(function(page) {
+      var viewport = page.getViewport(scale);
+      canvas.height = viewport.height;
+      canvas.width = viewport.width;
+
+      // Render PDF page into canvas context
+      var renderContext = {
+        canvasContext: ctx,
+        viewport: viewport
+      };
+      var renderTask = page.render(renderContext);
+
+      // Wait for rendering to finish
+      renderTask.promise.then(function() {
+        pageRendering = false;
+        if (pageNumPending !== null) {
+          // New page rendering is pending
+          renderPage(pageNumPending);
+          pageNumPending = null;
+        }
+      });
+    });
+  }
+
+  /**
+   * Asynchronously downloads PDF.
+   */
+  var loadingTask = PDFJS.getDocument(url);
+  var $progressData = document.querySelector('#progressData');
+
+
+  loadingTask.promise.then(function(pdfDoc_) {
+    pdfDoc = pdfDoc_;
+
+    // Initial/first page rendering
+    renderPage(pageNum);
+  });
+
 </script>
 </html>
