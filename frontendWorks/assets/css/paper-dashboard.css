@@ -5,7 +5,7 @@
  =========================================================
 
  * Product Page: http://www.creative-tim.com/product/paper-dashboard
- * Copyright 2017 OORJA (http://www.creative-tim.com)
+ * Copyright 2017 JOBSTER (http://www.creative-tim.com)
  * Licensed under MIT (https://github.com/creativetimofficial/paper-dashboard/blob/master/LICENSE.md)
 
  =========================================================

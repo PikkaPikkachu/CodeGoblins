@@ -6,7 +6,7 @@
   <link rel="icon" type="image/png" sizes="96x96" href="../assets/img/favicon.png">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
   
-  <title>News</title>
+  <title>Paper Dashboard by JOBSTER</title>
   
   <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
   <meta name="viewport" content="width=device-width" />
@@ -24,6 +24,11 @@
   
   <!--  CSS for Demo Purpose, don't include it in your project     -->
   <link href="../assets/css/demo.css" rel="stylesheet" />
+  
+  <style>
+    #submit{
+    }
+  </style>
   
   
   <!--  Fonts and icons     -->
@@ -56,31 +61,32 @@
             <p>Dashboard</p>
           </a>
         </li>
-        <li>
+        <li class="active">
           <a href="UploadResume.html">
             <i class="ti-panel"></i>
             <p>Upload Resume</p>
           </a>
         </li>
+  
         <li>
           <a href="form.html">
             <i class="ti-notepad"></i>
             <p>Generate New Resume<p>
           </a>
         </li>
-        <li class="active">
+        <li>
           <a href="news.html">
             <i class="ti-bell"></i>
             <p>Recent Job Openings</p>
           </a>
         </li>
-        
         <li>
           <a href="fundGenerator.html">
             <i class="ti-share"></i>
             <p>Share My Resume</p>
           </a>
         </li>
+        
         <li>
           <a href="user.html">
             <i class="ti-user"></i>
@@ -93,29 +99,20 @@
             <p>Current Trends</p>
           </a>
         </li>
-  
         <li>
           <a href="video.html">
             <i class="ti-wand"></i>
             <p>Build it better</p>
           </a>
         </li>
-  
+        
         <li>
           <a href="googlePlaces.html">
             <i class="ti-location-pin"></i>
             <p>Openings Nearby</p>
           </a>
         </li>
-  
-        <li>
-          <a href="calender.html">
-            <i class="ti-calendar"></i>
-            <p>Calender</p>
-          </a>
-        </li>
-
-
+      
       </ul>
     </div>
   </div>
@@ -130,43 +127,43 @@
             <span class="icon-bar bar2"></span>
             <span class="icon-bar bar3"></span>
           </button>
-          <a class="navbar-brand" id="fetchNews">Fetch News</a>
+          <a class="navbar-brand" href="#">Uploads</a>
           <div id="google_translate_element"></div>
           <script type="text/javascript">
-		        function googleTranslateElementInit() {
-			        new google.translate.TranslateElement({pageLanguage: 'en', layout: google.translate.TranslateElement.InlineLayout.SIMPLE}, 'google_translate_element');
-		        }
+						function googleTranslateElementInit() {
+							new google.translate.TranslateElement({pageLanguage: 'en', layout: google.translate.TranslateElement.InlineLayout.SIMPLE}, 'google_translate_element');
+						}
           </script>
           <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
-
+        
         </div>
         <div class="collapse navbar-collapse">
           <ul class="nav navbar-nav navbar-right">
             <li>
               <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                <!--<i class="ti-panel"></i>
-                <p>Stats</p>-->
+                <!--<i class="ti-panel"></i>-->
+                <!--<p>Stats</p>-->
               </a>
             </li>
-           <!-- <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                <i class="ti-bell"></i>
-                <p class="notification">5</p>
-                <p>Notifications</p>
-                <b class="caret"></b>
-              </a>
-              <ul class="dropdown-menu">
-                <li><a href="#">Notification 1</a></li>
-                <li><a href="#">Notification 2</a></li>
-                <li><a href="#">Notification 3</a></li>
-                <li><a href="#">Notification 4</a></li>
-                <li><a href="#">Another notification</a></li>
-              </ul>
-            </li>-->
+            <!--<li class="dropdown">-->
+            <!--<a href="#" class="dropdown-toggle" data-toggle="dropdown">-->
+            <!--<i class="ti-bell"></i>-->
+            <!--<p class="notification">5</p>-->
+            <!--<p>Notifications</p>-->
+            <!--<b class="caret"></b>-->
+            <!--</a>-->
+            <!--<ul class="dropdown-menu">-->
+            <!--<li><a href="#">Notification 1</a></li>-->
+            <!--<li><a href="#">Notification 2</a></li>-->
+            <!--<li><a href="#">Notification 3</a></li>-->
+            <!--<li><a href="#">Notification 4</a></li>-->
+            <!--<li><a href="#">Another notification</a></li>-->
+            <!--</ul>-->
+            <!--</li>-->
             <li>
               <a href="#">
-                <i class="ti-user"></i>
-                <p id="displayName">Settings</p>
+                <i class = "ti-user"></i>
+                <p id="displayName"></p>
               </a>
             </li>
           </ul>
@@ -175,16 +172,65 @@
       </div>
     </nav>
     <div id="blog" class="light-wrapper">
-      <div style="font-weight:bold;font-size:23px;position: relative;top:40px;margin-bottom: 40px" class="text-center">JS JOBS NEWS </div>
-      <br>
-      <div class="container inner" id="newsList">
-      </div>
-      <div style="font-weight:bold;font-size:23px;position: relative;top:40px;margin-bottom: 40px" class="text-center">PYTHON JOBS NEWS</div>
-        <br>
-        <div class="container inner" id="newsListCrickbuzz">
+      <div class="container inner">
+        <div class="title">
+          <h2 class="section-title text-center">Upload A Resume or Job Opening</h2>
         </div>
+        
+        <div class="row">
+          
+          <form class="needs-validation" novalidate>
+            
+            <!--<div class="form-row">
+              <div class="col-md-5 mb-3">
+                <label for="fname">First name</label>
+                <input type="text" class="form-control" id="fname" placeholder="First name" required>
+              </div>
+              <div class="col-md-5 mb-3">
+                <label for="lname">Last name</label>
+                <input type="text" class="form-control" id="lname" placeholder="Last name" required>
+              </div>
+            </div>
+            <div class="form-row mb-3">
+              <div class="col-md-5 mb-3">
+                <label for="contactDetails">Contact Details</label>
+                <input type="text" height="100" class="form-control" id="contactDetails" placeholder="contact" required>
+              </div>
+              <div class="col-md-5 mb-3" >
+                <label for="mop">Preferred Mode Of Payment</label>
+                <input type="text" class="form-control" id="mop" placeholder="Mode of Payment" required>
+              </div>
+            </div>
+            <div class="form-row mb-3">
+              <div class="col-md-5 mb-3" >
+                <label for="purpose">Purpose</label>
+                <input type="text" class="form-control" id="purpose" placeholder="State The Entire Purpose" required>
+              </div>
+              <div class="col-md-5 mb-3" >
+                <label for="money">Money</label>
+                <input type="text" class="form-control" id="money" placeholder="Money" required>
+              </div>
+            </div>-->
+            
+            <div class="form-row">
+              <div class="col-md-5 mt-5 mb-3">
+                <button type="submit" style="margin-bottom: 10px" id="submit" class="col-md-offset-4 col-md-4 mt-5 btn btn-primary">Resume</button>
+              </div>
+              <div class="col-md-5 mt-5 mb-3">
+                <button class=" col-md-4 mt-5 btn btn-primary" style="margin-bottom: 10px">Job Opening</button>
+              </div>
+
+            </div>
+          
+          </form>
+        </div>
+        <!-- /.blog -->
+      </div>
       <!-- /.container -->
-    ><!-- #blog -->
+    </div><!-- #blog -->
+  
+  
+  
   
   </div>
 </div>
@@ -214,7 +260,7 @@
 <!-- Paper Dashboard DEMO methods, don't include it in your project! -->
 <script src="../assets/js/demo.js"></script>
 
-<script src="../selfJS/news.js"></script>
+<script src="../selfJS/fundGenerator.js"></script>
 
 <script type="text/javascript">
 	
@@ -224,7 +270,7 @@
 		
 		$.notify({
 			icon: 'ti-gift',
-			message: "Hey Generate Your Resume Now  "
+			message: "Hey Generate A Fund Collector Page Now  "
 			
 		},{
 			type: 'success',
@@ -234,6 +280,6 @@
 	});
 </script>
 <script>
-  $('#displayName').text(JSON.parse(localStorage.getItem('userData')).data.name);
+	$('#displayName').text(JSON.parse(localStorage.getItem('userData')).data.name);
 </script>
 </html>

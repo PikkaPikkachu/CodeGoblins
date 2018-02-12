@@ -2,7 +2,7 @@
     
     
 
-     OORJA Modifications
+     JOBSTER Modifications
      
      Lines: 239, 240 was changed from top: 5px to top: 50% and we added margin-top: -13px. In this way the close button will be aligned vertically
      Line:242 - modified when the icon is set, we add the class "alert-with-icon", so there will be enough space for the icon.

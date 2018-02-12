@@ -335,7 +335,7 @@
 .ti-view-list:before {
 	content: "\e667";
 }
-.ti-view-list-alt:before {
+.ti-new-window:before {
 	content: "\e668";
 }
 .ti-view-grid:before {
@@ -443,7 +443,7 @@
 .ti-mouse-alt:before {
 	content: "\e68b";
 }
-.ti-money:before {
+.ti-share:before {
 	content: "\e68c";
 }
 .ti-microphone:before {
@@ -644,7 +644,7 @@
 .ti-video-clapper:before {
 	content: "\e6ce";
 }
-.ti-video-camera:before {
+.ti-wand:before {
 	content: "\e6cf";
 }
 .ti-vector:before {
