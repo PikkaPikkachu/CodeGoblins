@@ -13,26 +13,27 @@ $(document).ready(function () {
     let dob = $('#dob').val();
     let contact = $('#contact').val();
     let gender = $('#gender').val();
-    let weight = $('#weight').val();
-    let height = $('#height').val();
-    let bmi = $('#bmi').val();
-    let bmr = $('#bmr').val();
-    let fit = $('#fit').val();
-    let form = $('#form').val();
     let achievements = $('#achievements').val();
+    let Email = $('#Email').val();
+    let Address = $('#Address').val();
+    let School = $('#School').val();
+    let College = $('#College').val();
+    let LinkedIn = $('#LinkedIn').val();
+    let VolunteerExperience = $('#VolunteerExperience').val();
+    
 
 		let formData = {
 			fname,
       lname,
       dob,
-			bmr,
+			VolunteerExperience,
       contact,
       gender,
-      weight,
-      height,
-    	bmi,
-    	fit,
-    	form,
+      LinkedIn,
+      College,
+    	School,
+    	Address,
+    	Email,
 			achievements
 		};
 		if( formData ) {
