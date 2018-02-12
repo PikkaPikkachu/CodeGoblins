@@ -1,0 +1,9 @@
+{
+  "SERVER": {
+    "PORT": 3000
+  },
+  "DB" : {
+    "URI" : "mongodb://localhost:27017/HackeamDB",
+    "mlabURI" : "mongodb://shikhar:123456789@ds129428.mlab.com:29428/hackeamdb"
+  }
+}
