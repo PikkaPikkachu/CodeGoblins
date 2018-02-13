@@ -33,8 +33,8 @@ $(document).ready(function () {
     for (let data of datas) {
       let newsCard = $(`<div class="card" style="height:200px;margin: 20px;width: 90rem; float: left">
 												<div class="card-body">
-												<p title="${data.turnstileLink}" class="card-text" style="padding: 10px; height: 100px">${data.turnstileLink}</p>
-												<p title="${data.company}" class="card-text" style="padding: 10px; height: 100px">${data.company}</p>
+											<a href="https://www.indeed.co.in/ + ${data.link}" target="_blank">	<p title="${data.turnstileLink}" class="card-text" style="padding: 10px; height: 100px">${data.turnstileLink}</p>
+												<p title="${data.company}" class="card-text" style="padding: 10px; height: 100px">${data.company}</p></a>
 											</div>
 											</div>`);
      	newsList.append(newsCard)

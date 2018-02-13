@@ -68,6 +68,7 @@ router.post('/jsJobs', (req,res)=>{
   scraperjs.StaticScraper.create("https://www.indeed.co.in/jobs?q=javascript&l=Delhi")
     .scrape(function($) {
       return $(".turnstileLink").map(function() {
+      	console.log(this)
         data = {
           turnstileLink: $(this).text(),
           company: $(this).parent().next().text()
@@ -85,7 +86,9 @@ router.post('/pythonJobs', (req,res)=>{
   scraperjs.StaticScraper.create("https://www.indeed.co.in/python-jobs-in-Delhi")
     .scrape(function($) {
       return $(".turnstileLink").map(function() {
+      	console.log(this.attribs.href)
         data = {
+      		link: $(this).attrib.href,
           turnstileLink: $(this).text(),
           company: $(this).parent().next().text()
         }

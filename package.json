@@ -18,8 +18,12 @@
   },
   "homepage": "https://github.com/shikhar-scs/hckm#readme",
   "dependencies": {
+    "blueimp-file-upload": "^9.20.0",
+    "blueimp-file-upload-node": "^2.1.0",
     "express": "^4.16.2",
+    "express-fileupload": "^0.4.0",
     "mongodb": "^2.2.33",
+    "multer": "^1.3.0",
     "pdf.js-extract": "0.0.8",
     "phantomjs": "^2.1.7",
     "scraperjs": "^1.2.0"

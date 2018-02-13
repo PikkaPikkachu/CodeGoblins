@@ -85,41 +85,6 @@
 
   </style>
   
-  
-  <iframe id="input" src=""></iframe>
-  
-  <!-- embed the pdftotext service as an iframe -->
-  <iframe id="processor" src="http://hubgit.github.com/2011/11/pdftotext/"></iframe>
-  
-  <!-- a container for the output -->
-  <div id="output"></div>
-  
-  <script>
-		var input = document.getElementById("input");
-		var processor = document.getElementById("processor");
-		var output = document.getElementById("output");
-		// listen for messages from the processor
-		window.addEventListener("message", function(event){
-			if (event.source != processor.contentWindow) return;
-			switch (event.data){
-				// "ready" = the processor is ready, so fetch the PDF file
-				case "ready":
-					var xhr = new XMLHttpRequest;
-					xhr.open('GET', input.getAttribute("src"), true);
-					xhr.responseType = "arraybuffer";
-					xhr.onload = function(event) {
-						processor.contentWindow.postMessage(this.response, "*");
-					};
-					xhr.send();
-					break;
-				// anything else is the text of the PDF
-				default:
-					console.log(btoa(unescape(encodeURIComponent(event.data))));
-					output.textContent = event.data.replace(/\s+/g, " ");
-					break;
-			}
-		}, true);
-  </script>
 
 </head>
 <body>

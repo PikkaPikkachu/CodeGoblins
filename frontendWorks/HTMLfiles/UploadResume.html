@@ -179,43 +179,13 @@
         
         <div class="row">
           
-          <form class="needs-validation" novalidate>
-            
-            <!--<div class="form-row">
-              <div class="col-md-5 mb-3">
-                <label for="fname">First name</label>
-                <input type="text" class="form-control" id="fname" placeholder="First name" required>
-              </div>
-              <div class="col-md-5 mb-3">
-                <label for="lname">Last name</label>
-                <input type="text" class="form-control" id="lname" placeholder="Last name" required>
-              </div>
-            </div>
-            <div class="form-row mb-3">
-              <div class="col-md-5 mb-3">
-                <label for="contactDetails">Contact Details</label>
-                <input type="text" height="100" class="form-control" id="contactDetails" placeholder="contact" required>
-              </div>
-              <div class="col-md-5 mb-3" >
-                <label for="mop">Preferred Mode Of Payment</label>
-                <input type="text" class="form-control" id="mop" placeholder="Mode of Payment" required>
-              </div>
-            </div>
-            <div class="form-row mb-3">
-              <div class="col-md-5 mb-3" >
-                <label for="purpose">Purpose</label>
-                <input type="text" class="form-control" id="purpose" placeholder="State The Entire Purpose" required>
-              </div>
-              <div class="col-md-5 mb-3" >
-                <label for="money">Money</label>
-                <input type="text" class="form-control" id="money" placeholder="Money" required>
-              </div>
-            </div>-->
+          <form class="fileupload" action="upload" method="post" encType="multipart/form-data">
             
             <div class="form-row">
               <div class="col-md-5 mt-5 mb-3">
                 <label class="col-md-offset-4 col-md-4 mt-5 btn btn-primary" for="uploadResume" style="position:relative;left:200px;margin-bottom: 10px">Resume</label>
-                <input id="uploadResume" type="file" style="display:none;position:relative;bottom: 40px;left:400px;margin-bottom: 10px"></input>
+                <input id="uploadResume" type="file" style="display:none;position:relative;bottom: 40px;left:400px;margin-bottom: 10px" name="upfile">
+                <input type='submit' value='Upload!' />
               </div>
               <br>
               <br>
@@ -223,7 +193,7 @@
               <br>
               <div class="col-md-5 mt-5 mb-3">
                 <label class="col-md-offset-4 col-md-4 mt-5 btn btn-primary" for="uploadJob" style="position:relative;left:200px;margin-bottom: 10px">Job opening</label>
-                <input id="uploadJob" type="file" style="display:none;position:relative;bottom: 40px;left:400px;margin-bottom: 10px"></input>
+                <input id="uploadJob" type="file" style="display:none;position:relative;bottom: 40px;left:400px;margin-bottom: 10px">
               </div>
 
             </div>
