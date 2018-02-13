@@ -3,6 +3,9 @@ $(function () {
   $('#facebookBTN').click(function () {
     window.location.href = `https://www.facebook.com/sharer/sharer.php?u=${url}`;
   });
+  $('#linkedinBTN').click(function () {
+    window.location.href = `https://www.linkedin.com/shareArticle?mini=true&url=${url}&title=Resume&summary=&source=`
+  });
   $('#twitterBTN').click(function () {
     window.location.href = `https://twitter.com/home?status=${url}`;
   });
