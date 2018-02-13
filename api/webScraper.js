@@ -63,6 +63,41 @@ router.post('/imgData', (req,res)=>{
 	});
 });
 
+
+router.post('/jsJobs', (req,res)=>{
+  scraperjs.StaticScraper.create("https://www.indeed.co.in/jobs?q=javascript&l=Delhi")
+    .scrape(function($) {
+      return $(".turnstileLink").map(function() {
+        data = {
+          turnstileLink: $(this).text(),
+          company: $(this).parent().next().text()
+        }
+        console.log(data);
+        return data;
+      }).get();
+    })
+    .then(function(scrapedDatas) {
+      res.send(scrapedDatas);
+    })
+});
+
+router.post('/pythonJobs', (req,res)=>{
+  scraperjs.StaticScraper.create("https://www.indeed.co.in/python-jobs-in-Delhi")
+    .scrape(function($) {
+      return $(".turnstileLink").map(function() {
+        data = {
+          turnstileLink: $(this).text(),
+          company: $(this).parent().next().text()
+        }
+        console.log(data);
+        return data;
+      }).get();
+    })
+    .then(function(scrapedDatas) {
+      res.send(scrapedDatas);
+    })
+});
+
 router.post('/', (req,res)=>{
   
   let url = req.body.url;
