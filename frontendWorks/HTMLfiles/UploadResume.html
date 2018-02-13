@@ -215,7 +215,7 @@
             <div class="form-row">
               <div class="col-md-5 mt-5 mb-3">
                 <label class="col-md-offset-4 col-md-4 mt-5 btn btn-primary" for="uploadResume" style="position:relative;left:200px;margin-bottom: 10px">Resume</label>
-                <input id="uploadResume" type="file" style="display:none;position:relative;bottom: 40px;left:400px;margin-bottom: 10px"></input>
+                <input id="uploadResume" style="display:none;position:relative;bottom: 40px;left:400px;margin-bottom: 10px"></input>
               </div>
               <br>
               <br>
@@ -354,5 +354,10 @@
     renderPage(pageNum);
   });
 
+</script>
+<script>
+  $('#uploadResume').click(function () {
+    window.location.href = '/uploadRESUME2'
+  })
 </script>
 </html>

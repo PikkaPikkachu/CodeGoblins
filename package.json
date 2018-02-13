@@ -19,6 +19,7 @@
   "homepage": "https://github.com/shikhar-scs/hckm#readme",
   "dependencies": {
     "express": "^4.16.2",
+    "express-fileupload": "^0.4.0",
     "mongodb": "^2.2.33",
     "pdf.js-extract": "0.0.8",
     "phantomjs": "^2.1.7",
