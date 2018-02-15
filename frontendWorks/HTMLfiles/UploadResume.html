@@ -179,10 +179,10 @@
         
         <div class="row">
           
-          <form class="fileupload" action="upload" method="post" encType="multipart/form-data">
+          <!--<form class="fileupload" action="uploadRESUME2" method="get" encType="multipart/form-data">
             
             <div class="form-row">
-              <div class="col-md-5 mt-5 mb-3">
+              &lt;!&ndash;<div class="col-md-5 mt-5 mb-3">
                 <label class="col-md-offset-4 col-md-4 mt-5 btn btn-primary" for="uploadResume" style="position:relative;left:200px;margin-bottom: 10px">Resume</label>
                 <input id="uploadResume" type="file" style="display:none;position:relative;bottom: 40px;left:400px;margin-bottom: 10px" name="upfile">
                 <input type='submit' value='Upload!' />
@@ -195,11 +195,18 @@
                 <label class="col-md-offset-4 col-md-4 mt-5 btn btn-primary" for="uploadJob" style="position:relative;left:200px;margin-bottom: 10px">Job opening</label>
                 <input id="uploadJob" type="file" style="display:none;position:relative;bottom: 40px;left:400px;margin-bottom: 10px">
               </div>
-
+&ndash;&gt;
+              <input type="file">
             </div>
           
+          </form>-->
+          <form class="fileupload" action="/upload" method="post" enctype="multipart/form-data">
+            <h1>Upload File Here</h1>
+            <input type="file" name="upfile" value="">
+            <input type="submit" />
           </form>
-          <canvas style="position: relative;top:80px;right: 300px;" id="the-canvas"></canvas>
+          <!--<button id="form3upload">hey33333</button>-->
+          <!--<canvas style="position: relative;top:80px;right: 300px;" id="the-canvas"></canvas>-->
 
         </div>
         <!-- /.blog -->
@@ -326,7 +333,7 @@
 
 </script>
 <script>
-  $('#uploadResume').click(function () {
+  $('#form3upload').click(function () {
     window.location.href = '/uploadRESUME2'
   })
 </script>

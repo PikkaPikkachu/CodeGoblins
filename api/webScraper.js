@@ -86,9 +86,9 @@ router.post('/pythonJobs', (req,res)=>{
   scraperjs.StaticScraper.create("https://www.indeed.co.in/python-jobs-in-Delhi")
     .scrape(function($) {
       return $(".turnstileLink").map(function() {
-      	console.log(this.attribs.href)
+      	console.log($(this))
         data = {
-      		link: $(this).attrib.href,
+      		link: "#",
           turnstileLink: $(this).text(),
           company: $(this).parent().next().text()
         }
