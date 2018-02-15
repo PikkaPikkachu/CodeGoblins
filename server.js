@@ -1,8 +1,8 @@
 const bodyParser = require('body-parser');
 const path = require("path");
 const express = require('express');
-var app = express();
-var upload = require('express-fileupload');
+const app = express();
+const upload = require('express-fileupload');
 const http = require('http');
 
 http.Server(app).listen(3000);
@@ -39,4 +39,3 @@ app.get('/',(req,res)=>{
 app.get('/HTMLfiles',(req,res)=>{
   res.sendFile(__dirname+'/frontendWorks/HTMLfiles/index2.html');
 });
-

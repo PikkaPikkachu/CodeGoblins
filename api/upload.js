@@ -30,6 +30,18 @@ route.post('/',function(req,res){
 	}
 });
 
+function sendScore (score) {
+	
+	console.log('inside upload.js sendScore')
+	
+	route.get('/score', (req,res) => {
+	
+	console.log('inside score request');
+			res.send({score : score})
+	})
+
+}
+
 function spec_extractor(name){
 	
 	pdfExtract.extract(path.join(__dirname,'uploads', name), {} , function (err, data) {
@@ -40,11 +52,11 @@ function spec_extractor(name){
 		if (jobopenString.length !== 0 && hello.length !== 0)
 			keyWordGenerator(jobopenString,hello)
 		else
-			res_extractor();
+			res_extractor(name);
 	});
 }
 
-function res_extractor(){
+function res_extractor(name){
 	
 	pdfExtract.extract(path.join(__dirname,'uploads','./SR.pdf'), {} , function (err, data) {
 		if (err) return console.log(err);
@@ -54,7 +66,7 @@ function res_extractor(){
 		if (jobopenString.length !== 0 && hello.length !== 0)
 			keyWordGenerator(jobopenString,hello)
 		else
-			spec_extractor();
+			spec_extractor(name);
 	});
 }
 
@@ -68,6 +80,7 @@ function keyWordGenerator(first, second){
 	py.stdout.on('data', function(data){
 		info += data.toString();
 		console.log(info)
+		sendScore(info)
 	});
 	
 	py.stderr.on('data', (data) => {

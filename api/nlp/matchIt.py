@@ -2,8 +2,6 @@
 
 import language_check
 
-
-
 def check_lang(text):
     lc = {}
     tool = language_check.LanguageTool('en-GB')

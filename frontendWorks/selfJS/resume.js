@@ -8,7 +8,6 @@ $(document).ready(function () {
 		}
 	)
 	
-	
 	$('#pdf').click( function () {
 		window.print()
 	})

@@ -83,4 +83,3 @@ if __name__ == "__main__":
   data = sys.argv[1]
   rake = RakeKeywordExtractor()
   keywords = rake.extract(data, incl_scores=True)
-  print keywords

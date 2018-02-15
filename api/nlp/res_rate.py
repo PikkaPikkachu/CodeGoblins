@@ -48,9 +48,7 @@ if __name__ == "__main__":
 
   keywords = get_nouns(data["spec"])
   keywords = extend_rate(keywords)
-  print keywords
   res_key = get_nouns(data["resume"])
-  print res_key
   print get_rating(res_key, keywords)
   sys.stdout.flush()
   # extend_rate(keywords)
