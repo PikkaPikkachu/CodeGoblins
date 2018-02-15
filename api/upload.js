@@ -1,44 +1,80 @@
 const route = require('express').Router();
-// const multer  = require('multer');
-const fileUpload = require('express-fileupload');
+const PDFExtract = require('pdf.js-extract').PDFExtract;
+const pdfExtract = new PDFExtract();
+const path = require('path');
 
-/*const storage = multer.diskStorage({
-	destination: function (req, file,cb) {
-		cb(null, './uploads/');
-	},
-	filename: function(req, file, cb) {
-		cb(null, new Date().toISOString + file.originalname
-		)
-	}
-})
-const upload = multer({ storage:storage});*/
+let jobopenString = '';
+let hello = '';
 
-route.post('/', function (req, res, next) {
-	if(req.files.upfile) {
+route.post('/',function(req,res){
+	if(req.files.upfile){
 		var file = req.files.upfile,
 			name = file.name,
 			type = file.mimetype;
 		var uploadpath = __dirname + '/uploads/' + name;
-		file.mv(uploadpath, function (err) {
-			if (err) {
-				console.log("File Upload Failed", name, err);
+		file.mv(uploadpath,function(err){
+			if(err){
+				console.log("File Upload Failed",name,err);
 				res.send("Error Occured!")
 			}
 			else {
-				console.log("File Uploaded", name);
-				res.send('Done! Uploading files')
+				console.log("File Uploaded",name);
+				spec_extractor(name);
+				res.redirect('/HTMLfiles/UploadResume.html')
 			}
 		});
-	}})
-	// let sampleFile = req.files.sampleFile;
+	}
+	else {
+		res.send("No File selected !");
+		res.end();
+	}
+});
+
+function spec_extractor(name){
 	
-	// Use the mv() method to place the file somewhere on your server
-	// sampleFile.mv('/somewhere/on/your/server/filename.jpg', function (err) {
-	// 	if (err)
-	// 		return res.status(500).send(err);
-	//
-	// 	res.send('File uploaded!');
-	// })
-// })
+	pdfExtract.extract(path.join(__dirname,'uploads', name), {} , function (err, data) {
+		if (err) return console.log(err);
+		for ( let i = 0 ; i < data.pages[0].content.length; i++)
+			jobopenString += ' ' + data.pages[0].content[i].str;
+		
+		if (jobopenString.length !== 0 && hello.length !== 0)
+			keyWordGenerator(jobopenString,hello)
+		else
+			res_extractor();
+	});
+}
+
+function res_extractor(){
+	
+	pdfExtract.extract(path.join(__dirname,'uploads','./SR.pdf'), {} , function (err, data) {
+		if (err) return console.log(err);
+		for ( let i = 0 ; i < data.pages[0].content.length; i++)
+			hello += ' ' + data.pages[0].content[i].str;
+		
+		if (jobopenString.length !== 0 && hello.length !== 0)
+			keyWordGenerator(jobopenString,hello)
+		else
+			spec_extractor();
+	});
+}
+
+function keyWordGenerator(first, second){
+	
+	let spawn = require('child_process').spawn;
+	let py = spawn('python', [__dirname+'/nlp/res_rate.py', `{"spec": \"${first}\", "resume": \"${second}\"}`]);
+	
+	let info = '';
+	
+	py.stdout.on('data', function(data){
+		info += data.toString();
+		console.log(info)
+	});
+	
+	py.stderr.on('data', (data) => {
+		console.log(data.toString());
+		console.log("Error occured!");
+	});
+	py.stdin.end();
+}
 
 module.exports.route = route;

@@ -200,11 +200,11 @@
             </div>
           
           </form>-->
+          <div id="" class="light-wrapper">
           <form class="fileupload" action="/upload" method="post" enctype="multipart/form-data">
-            <h1>Upload File Here</h1>
-            <input type="file" name="upfile" value="">
-            <input type="submit" />
-          </form>
+            <input type="file" name="upfile" value="" id="pdfFile">
+            <input type="submit" id="submitForm"/>
+          </form></div>
           <!--<button id="form3upload">hey33333</button>-->
           <!--<canvas style="position: relative;top:80px;right: 300px;" id="the-canvas"></canvas>-->
 
@@ -245,7 +245,7 @@
 <!-- Paper Dashboard DEMO methods, don't include it in your project! -->
 <script src="../assets/js/demo.js"></script>
 
-<script src="../selfJS/fundGenerator.js"></script>
+<script src="../selfJS/pdftotext.js"></script>
 
 <script type="text/javascript">
 	
@@ -273,7 +273,7 @@
   $('#uploadResume').change(function () {
     console.log(this.files[0]);
   });
-  var url = '//cdn.mozilla.net/pdfjs/tracemonkey.pdf';
+  var url = path.join(__dirname, '../api/', up;
 
   // The workerSrc property shall be specified.
   PDFJS.workerSrc = '//mozilla.github.io/pdf.js/build/pdf.worker.js';

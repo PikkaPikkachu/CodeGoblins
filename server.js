@@ -28,7 +28,9 @@ app.use('/form',routes.form);
 app.use('/fundGenerator',routes.fundGenerator);
 app.use('/rules',routes.rules);
 app.use('/video',routes.video);
+app.use('/upload',routes.upload)
 app.use('/',express.static(path.join(__dirname,'frontendWorks')));
+
 
 app.get('/',(req,res)=>{
   res.redirect('/HTMLfiles');
@@ -37,30 +39,4 @@ app.get('/',(req,res)=>{
 app.get('/HTMLfiles',(req,res)=>{
   res.sendFile(__dirname+'/frontendWorks/HTMLfiles/index2.html');
 });
-
-
-app.post('/upload',function(req,res){
-  console.log(req.files);
-  if(req.files.upfile){
-    var file = req.files.upfile,
-      name = file.name,
-      type = file.mimetype;
-    var uploadpath = __dirname + '/uploads/' + name;
-    file.mv(uploadpath,function(err){
-      if(err){
-        console.log("File Upload Failed",name,err);
-        res.send("Error Occured!")
-      }
-      else {
-        console.log("File Uploaded",name);
-        res.send('Done! Uploading files')
-      }
-    });
-  }
-  else {
-    res.send("No File selected !");
-    res.end();
-  }
-});
-
 
