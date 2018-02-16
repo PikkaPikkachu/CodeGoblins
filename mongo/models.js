@@ -3,7 +3,7 @@ const assert = require('assert');
 const database = require('../config').DB;
 
 // Connection URL
-// const url = 'mongodb://localhost:27017';
+const url = 'mongodb://localhost:27017';
 // Database Name
 const dbName = 'HackeamDB';
 

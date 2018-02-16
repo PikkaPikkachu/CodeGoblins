@@ -47,9 +47,7 @@ if __name__ == "__main__":
   data = load_dirty_json(resume)
 
   keywords = get_nouns(data["spec"])
-  print keywords
   keywords = extend_rate(keywords)
-  print keywords
   res_key = get_nouns(data["resume"])
   print get_rating(res_key, keywords)
   sys.stdout.flush()

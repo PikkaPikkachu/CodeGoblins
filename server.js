@@ -5,7 +5,7 @@ const app = express();
 const upload = require('express-fileupload');
 const http = require('http');
 
-http.Server(app).listen(3000);
+http.Server(app).listen( process.env.PORT || 3000);
 console.log("Server Started at port 3000");
 
 const routes = {
@@ -39,9 +39,4 @@ app.get('/',(req,res)=>{
 
 app.get('/HTMLfiles',(req,res)=>{
   res.sendFile(__dirname+'/frontendWorks/HTMLfiles/index2.html');
-});
-
-app.use('/', ( req, res, next) => {
-	res.status(404).sendFile(path.join(__dirname,'frontendWorks/HTMLfiles/404ErrorFile.html'))
-	next();
 });
