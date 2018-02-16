@@ -20,7 +20,7 @@ route.post('/',function(req,res){
 			else {
 				console.log("File Uploaded",name);
 				spec_extractor(name);
-				res.redirect('/HTMLfiles/UploadResume.html')
+				res.sendFile(path.join(__dirname,'../frontendWorks/HTMLfiles/UploadResume.html'))
 			}
 		});
 	}
