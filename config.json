@@ -4,6 +4,6 @@
   },
   "DB" : {
     "URI" : "mongodb://localhost:27017/HackeamDB",
-    "mlabURI" : "mongodb://shikhar:123456789@ds129428.mlab.com:29428/hackeamdb"
+    "mlabURI" : "mongodb://jobster:123456789@ds237858.mlab.com:37858/jobster"
   }
 }

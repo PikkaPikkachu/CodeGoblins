@@ -18,6 +18,7 @@ const routes = {
   upload: require('./api/upload').route
 };
 
+
 app.use(upload());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended:true}));
@@ -38,4 +39,9 @@ app.get('/',(req,res)=>{
 
 app.get('/HTMLfiles',(req,res)=>{
   res.sendFile(__dirname+'/frontendWorks/HTMLfiles/index2.html');
+});
+
+app.use('/', ( req, res, next) => {
+	res.status(404).sendFile(path.join(__dirname,'frontendWorks/HTMLfiles/404ErrorFile.html'))
+	next();
 });
