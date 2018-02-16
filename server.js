@@ -5,7 +5,7 @@ const app = express();
 const upload = require('express-fileupload');
 const http = require('http');
 
-http.Server(app).listen(3000);
+http.Server(app).listen( process.env.PORT || 3000);
 console.log("Server Started at port 3000");
 
 const routes = {
