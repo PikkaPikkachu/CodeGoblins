@@ -1,4 +1,3 @@
-import key
 import nltk
 from nltk.corpus import wordnet as wn
 from textblob import TextBlob

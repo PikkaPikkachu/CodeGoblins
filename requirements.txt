@@ -1,0 +1,4 @@
+nltk==3.2.5
+textblob==0.15.1
+jsonschema==2.6.0
+pandas==0.21.0
