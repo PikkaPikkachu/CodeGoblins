@@ -10,11 +10,11 @@ const dbName = 'HackeamDB';
 let usersCollection,formData,fundGenerator = null;
 
 // Use connect method to connect to the server
-MongoClient.connect(url, function(err, client) {
+MongoClient.connect(database.mlabURI, function(err, client) {
   assert.equal(null, err);
   console.log("Connected successfully to server");
 
-  const db = client.db('devsprintdb');
+  const db = client.db('jobster');
 	usersCollection = db.collection('userCollection');
 	formData = db.collection('formData');
 	fundGenerator = db.collection('fundGenerator')
