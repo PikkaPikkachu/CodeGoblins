@@ -1,5 +1,9 @@
 # Jobster
-Authored by : Prakriti Bansal, Shikhar Agnihotri, Soumya Himanish Mohapatra, Tanvi Dadu
+Authored by : 
+ - Prakriti Bansal [@PikkaPikkachu](https://github.com/PikkaPikkachu)
+ - Shikhar Agnihotri [@shikhar-scs](https://github.com/shikhar-scs)
+ - Soumya Himanish Mohapatra [@himanish-star](https://github.com/himanish-star)
+ - Tanvi Dadu
 
 # Visit it here 
 https://jobsterdevsprint.herokuapp.com/
