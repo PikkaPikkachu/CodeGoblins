@@ -8,6 +8,33 @@ Authored by :
 # Visit it here 
 https://jobsterdevsprint.herokuapp.com/
 
+## SetUp for Development
+
+
+  fork the github repository and run the following commands in a new directory on your PC
+ 
+ ```
+  git init .
+  git clone https://github.com/PikkaPikkachu/CodeGoblins
+  cd CodeGoblins
+  npm install
+``` 
+  set up a local mongodb database in any local directory using the command 
+   
+```
+  mongod --dbpath=./path-to-directory
+  
+```
+  Start the node server, ensure that you have the nltk and punkt modules of python installed. Post an issue or search on stackOverflow for any python related installation errors, they are pretty easy and straightforward to solve.
+  
+                                                  
+```
+  node server.js
+
+```
+
+Visit `https://localhost:3000` and start contributing. 
+
 ## Problem Statement Identified 
 Task is to design simple Natural Language processing tools such as Text Classifier, POS Tagger, Text Summarizer, Text Keyword extraction and Text Matcher. All these tools are to be designed as modules and to be used in a web-app for rating Resume and CVs. The app would have the option to upload any job requirement document and CV/Resume. After uploading both the documents, the user will receive a rating score of the uploaded CV/Resume against the corresponding job requirement which will be the measure of how likely is the Resume going to be shortlisted for the job requirement.
 
