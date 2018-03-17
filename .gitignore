@@ -1,3 +1,4 @@
 .idea
 node_modules
 mongo_working
+api/uploads
