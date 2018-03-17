@@ -19,14 +19,12 @@ https://jobsterdevsprint.herokuapp.com/
   cd CodeGoblins
   npm install
 ``` 
-  set up a local mongodb database in any local directory using the command 
+  set up a local mongodb database in any local directory using the following command. Remember to change the URI and database name in `mongo/models.js
    
 ```
   mongod --dbpath=./path-to-directory
-  
 ```
   Start the node server, ensure that you have the nltk and punkt modules of python installed. Post an issue or search on stackOverflow for any python related installation errors, they are pretty easy and straightforward to solve.
-  
                                                   
 ```
   node server.js
