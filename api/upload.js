@@ -11,14 +11,14 @@ route.post('/',function(req,res){
 		var file = req.files.upfile,
 			name = file.name,
 			type = file.mimetype;
-		var uploadpath = __dirname + '/uploads/' + name;
+		var uploadpath = __dirname + '/uploads/' + 'test.pdf';
 		file.mv(uploadpath,function(err){
 			if(err){
 				console.log("File Upload Failed",name,err);
 				res.send("Error Occured!")
 			}
 			else {
-			  spec_extractor(name);
+			  spec_extractor('test.pdf');
         res.sendFile(path.join(__dirname,'../frontendWorks/HTMLfiles/UploadResume.html'))
       }
 		});
@@ -31,7 +31,6 @@ route.post('/',function(req,res){
 
 function sendScore (score) {
 	route.get('/score', (req,res) => {
-	console.log('inside score request');
 	res.send({score : score})
 	})
 
