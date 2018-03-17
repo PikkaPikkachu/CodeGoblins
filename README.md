@@ -3,7 +3,7 @@ Authored by :
  - Prakriti Bansal [@PikkaPikkachu](https://github.com/PikkaPikkachu)
  - Shikhar Agnihotri [@shikhar-scs](https://github.com/shikhar-scs)
  - Soumya Himanish Mohapatra [@himanish-star](https://github.com/himanish-star)
- - Tanvi Dadu
+ - Tanvi Dadu [@tanvidadu](https://github.com/tanvidadu)
 
 # Visit it here 
 https://jobsterdevsprint.herokuapp.com/
@@ -14,3 +14,5 @@ Task is to design simple Natural Language processing tools such as Text Classifi
 ## Solution Proposed 
 The web-app allows user to upload their resume. On basis of their resume, our app provides them with their rating for a particular project. The app also provides user with the facility to share their resume on professional sites like naukri.com. 
 The app is Node based app that interacts with nltk scripts in python.  
+
+
