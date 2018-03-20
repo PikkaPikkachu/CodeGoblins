@@ -34,7 +34,7 @@ app.use('/',express.static(path.join(__dirname,'frontendWorks')));
 
 
 app.get('/',(req,res)=>{
-   res.redirect('/HTMLfiles');
+  res.redirect('/HTMLfiles');
 });
 
 app.get('/HTMLfiles',(req,res)=>{
