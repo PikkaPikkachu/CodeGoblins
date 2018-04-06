@@ -1,3 +1,5 @@
+import nltk
+nltk.download('punkt')
 from nltk import pos_tag, word_tokenize
 from nltk.corpus import wordnet as wn
 from textblob import TextBlob
