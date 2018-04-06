@@ -1,3 +1,5 @@
 wordnet
 pros_cons
 reuters
+pos_tag
+word_tokenize
