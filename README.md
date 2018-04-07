@@ -66,7 +66,7 @@ limitations under the License.
 ## Developed by 
  - Prakriti Bansal [@PikkaPikkachu](https://github.com/PikkaPikkachu)  :ghost:
  - Shikhar Agnihotri [@shikhar-scs](https://github.com/shikhar-scs)  :slightly_smiling_face:
- - Soumya Himanish Mohapatra [@himanish-star](https://github.com/himanish-star)  :relieved:
+ - Soumya Himanish Mohapatra (SHM) [@himanish-star](https://github.com/himanish-star)  :sunglasses:
  - Tanvi Dadu [@tanvidadu](https://github.com/tanvidadu)  :relaxed:
 
 
