@@ -6,11 +6,11 @@ $(document).ready(function () {
 		(data) => {
 			makeResume(data)
 		}
-	)
+	);
 	
 	$('#pdf').click( function () {
 		window.print()
-	})
+	});
 	function makeResume(data) {
 		data = data.data;
 		$('#name').text(data.fname + " " + data.lname );
