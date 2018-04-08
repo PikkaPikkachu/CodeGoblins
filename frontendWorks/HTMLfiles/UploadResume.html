@@ -200,10 +200,10 @@
             </div>
           
           </form>-->
-          <div id="" class="light-wrapper">
-          <form class="fileupload" action="/upload" method="post" enctype="multipart/form-data">
+          <div id="popo" class="light-wrapper">
+          <form id="uploadForm" enctype="multipart/form-data">
             <input type="file" name="upfile" value="" id="pdfFile">
-            <input type="submit" id="submitForm"/>
+            <button onclick="post_form()" id="submitForm"></button>
           </form>
           </div>
           
@@ -271,6 +271,30 @@
 	$('#displayName').text(JSON.parse(localStorage.getItem('userData')).data.name);
 </script>
 <script>
+  if(localStorage.getItem("flag")) {
+    setTimeout(function () {
+      $.get("/upload/resumeScore",function (data) {
+        console.log(data);
+        localStorage.setItem("flag", false);
+        $('#popo').append(`<div>${data}</div>`)
+      })
+    }, 4000)
+  }
+  function post_form(e){
+    var formData = new FormData($('#uploadForm')[0]);
+    $.ajax({
+      url: "/upload",
+      type: 'POST',
+      data: formData,
+      processData: false,
+      contentType: false,
+      success: function (data) {
+        console.log(data);
+      }
+    }).always(function (data) {
+      localStorage.setItem("flag", true);
+    });
+  }
   $('#form3upload').click(function () {
     window.location.href = '/uploadRESUME2'
   })

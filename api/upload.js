@@ -2,9 +2,12 @@ const route = require('express').Router();
 const PDFExtract = require('pdf.js-extract').PDFExtract;
 const pdfExtract = new PDFExtract();
 const path = require('path');
+const app  = require('express')();
 
-let jobopenString = '';
-let hello = '';
+
+route.get('/resumeScore', (req,res)=>{
+	res.send(app.locals.resumeScore);
+});
 
 route.post('/',function(req,res){
 	if(req.files.upfile){
@@ -38,19 +41,21 @@ function sendScore (score) {
 function spec_extractor(name, res) {
 	pdfExtract.extract(path.join(__dirname,'uploads', name), {} , function (err, data) {
 		if (err) return console.log(err);
-		for ( let i = 0 ; i < data.pages[0].content.length; i++) {
+    let jobopenString = '';
+    for ( let i = 0 ; i < data.pages[0].content.length; i++) {
 		  jobopenString += ' ' + data.pages[0].content[i].str;
 		  if(i === data.pages[0].content.length-1) {
-		    resumeExtractor(res);
+		    resumeExtractor(jobopenString, res);
       }
     }
 	});
 }
 
-function resumeExtractor(res){
+function resumeExtractor(jobopenString,res){
 	pdfExtract.extract(path.join(__dirname,'uploads','./SR.pdf'), {} , function (err, data) {
 		if (err) return console.log(err);
-		for ( let i = 0 ; i < data.pages[0].content.length; i++) {
+    let hello = '';
+    for ( let i = 0 ; i < data.pages[0].content.length; i++) {
 		  hello += ' ' + data.pages[0].content[i].str;
       if(i === data.pages[0].content.length-1) {
         keyWordGenerator(jobopenString, hello, res)
@@ -67,9 +72,9 @@ function keyWordGenerator(first, second, result){
 	let info = '';
 	
 	py.stdout.on('data', function(data){
-		info += data.toString();
+		info = data.toString();
 		console.log(info);
-		result.send(info);
+    app.locals.resumeScore = info;
 	});
 	
 	py.stderr.on('data', (data) => {
