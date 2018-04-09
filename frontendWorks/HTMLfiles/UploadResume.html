@@ -26,8 +26,50 @@
   <link href="../assets/css/demo.css" rel="stylesheet" />
   
   <style>
-    #submit{
+    .loader {
+      border: 6px solid #ebffda; /* Light grey */
+      border-left: 6px solid #008000; /* Blue */
+      border-right: 6px solid #008000; /* Blue */
+      border-radius: 50%;
+      width: 220px;
+      height: 220px;
+      animation: spin 2s linear infinite;
     }
+
+    #inProgress {
+      font-weight: bold;
+      font-size: 15px;
+      position: relative;
+      z-index: 3;
+      top: -120px;
+      left: 60px;
+    }
+
+    #inTwoProgress {
+      font-weight: bold;
+      font-size: 15px;
+      position: relative;
+      z-index: 3;
+      top: -120px;
+      left: 50px;
+    }
+
+    .loaderStatic {
+      border: 6px solid #f3f3f3; /* Light grey */
+      border-top: 6px solid #1215ff; /* Blue */
+      border-left: 6px solid #1215ff; /* Blue */
+      border-right: 6px solid #1215ff; /* Blue */
+      border-bottom: 6px solid #1215ff; /* Blue */
+      border-radius: 50%;
+      width: 220px;
+      height: 220px;
+    }
+
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
   </style>
   
   
@@ -201,12 +243,20 @@
           
           </form>-->
           <div id="popo" class="light-wrapper">
-          <form id="uploadForm" enctype="multipart/form-data">
-            <input type="file" name="upfile" value="" id="pdfFile">
-          </form>
-          <button onclick="post_form()" id="submitForm">submit</button>
+            <form id="uploadForm" enctype="multipart/form-data">
+              <input type="file" name="upfile" value="" id="pdfFile">
+            </form>
+            <button onclick="post_form()" id="submitForm">submit</button>
+            <div id="showAfterSubmit">
+              <div id="loaderProgress" class="loader"></div>
+              <div id="inProgress">Please wait ...</div>
+            </div>
+            <div id="showAfterDone">
+              <div id="loaderTwoProgress" class="loaderStatic"></div>
+              <div id="inTwoProgress">Your Score is <span id="scoreValue">$$</span></div>
+            </div>
           </div>
-          
+
           <div id="score"></div>
           <!--<button id="form3upload">hey33333</button>-->
           <!--<canvas style="position: relative;top:80px;right: 300px;" id="the-canvas"></canvas>-->
@@ -271,8 +321,13 @@
 	$('#displayName').text(JSON.parse(localStorage.getItem('userData')).data.name);
 </script>
 <script>
+  let showDone = $("#showAfterDone");
+  showDone.hide();
   function post_form(e){
     var formData = new FormData($('#uploadForm')[0]);
+    let showLoader = $("#showAfterSubmit");
+    showDone.hide();
+    showLoader.show();
     $.ajax({
       url: "/upload",
       type: 'POST',
@@ -284,8 +339,9 @@
       }
     }).always(function (data) {
       $.get("/upload/resumeScore",function (data) {
-        localStorage.setItem("flag", false);
-        $('#popo').append(`<div>${data}</div>`)
+        showLoader.hide();
+        console.log(showDone.query, showDone);
+        showDone.show();
       })
     });
   }
