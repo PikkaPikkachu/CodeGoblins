@@ -200,13 +200,28 @@
             </div>
           
           </form>-->
-          <div id="popo" class="light-wrapper">
-          <form id="uploadForm" enctype="multipart/form-data">
-            <input type="file" name="upfile" value="" id="pdfFile">
-          </form>
-          <button onclick="post_form()" id="submitForm">submit</button>
+          <div>
+            <div id="formUploadDiv" class="col-md-6 light-wrapper">
+              
+              <form id="uploadForm" enctype="multipart/form-data">
+                <input type="file" name="upfile" value="" id="pdfFile">
+              </form>
+              <button onclick="post_form()" id="submitForm">Submit Resume</button>
+            
+            </div>
+    
+            <div id="jobUploadDiv" class="col-md-6 light-wrapper">
+      
+              <form id="uploadJob" enctype="multipart/form-data">
+                <input type="file" name="upfile" value="" id="pdfFile">
+              </form>
+              <button onclick="post_job()" id="submitJob">Submit Job</button>
+    
+            </div>
           </div>
-          
+   
+  
+  
           <div id="score"></div>
           <!--<button id="form3upload">hey33333</button>-->
           <!--<canvas style="position: relative;top:80px;right: 300px;" id="the-canvas"></canvas>-->
@@ -285,12 +300,27 @@
     }).always(function (data) {
       $.get("/upload/resumeScore",function (data) {
         localStorage.setItem("flag", false);
-        $('#popo').append(`<div>${data}</div>`)
+        $('#formUploadDiv').append(`<div>${data}</div>`)
       })
     });
   }
-  $('#form3upload').click(function () {
-    window.location.href = '/uploadRESUME2'
-  })
+  function post_job(e){
+    var jobData = new FormData($('#uploadJob')[0]);
+    $.ajax({
+      url: "/uploadJob",
+      type: 'POST',
+      data: jobData,
+      processData: false,
+      contentType: false,
+      success: function (data) {
+        console.log(data);
+      }
+    }).always(function (data) {
+      $.get("/uploadJob/resumeScore",function (data) {
+        localStorage.setItem("flag", false);
+        $('#formUploadDiv').append(`<div>${data}</div>`)
+      })
+    });
+  }
 </script>
 </html>

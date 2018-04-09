@@ -4,7 +4,6 @@ const pdfExtract = new PDFExtract();
 const path = require('path');
 const app  = require('express')();
 
-
 route.get('/resumeScore', (req,res)=>{
 	res.send(app.locals.resumeScore);
 });
