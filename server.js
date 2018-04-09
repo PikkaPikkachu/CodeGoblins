@@ -15,7 +15,8 @@ const routes = {
   fundGenerator: require('./api/fundGenerator').route,
   rules: require('./api/rules').route,
   video: require('./api/videoClips').route,
-  upload: require('./api/upload').route
+  upload: require('./api/upload').route,
+  uploadJob: require('./api/uploadJob').route
 };
 
 
@@ -29,7 +30,8 @@ app.use('/form',routes.form);
 app.use('/fundGenerator',routes.fundGenerator);
 app.use('/rules',routes.rules);
 app.use('/video',routes.video);
-app.use('/upload',routes.upload)
+app.use('/upload',routes.upload);
+app.use('/uploadJob',routes.uploadJob);
 app.use('/',express.static(path.join(__dirname,'frontendWorks')));
 
 

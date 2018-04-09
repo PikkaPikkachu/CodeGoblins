@@ -31,12 +31,12 @@
       border-left: 6px solid #008000; /* Blue */
       border-right: 6px solid #008000; /* Blue */
       border-radius: 50%;
-      width: 220px;
-      height: 220px;
+      width: 240px;
+      height: 240px;
       animation: spin 2s linear infinite;
     }
 
-    #inProgress {
+    .loaderText {
       font-weight: bold;
       font-size: 15px;
       position: relative;
@@ -45,7 +45,7 @@
       left: 60px;
     }
 
-    #inTwoProgress {
+    .loaderStaticText {
       font-weight: bold;
       font-size: 15px;
       position: relative;
@@ -61,8 +61,8 @@
       border-right: 6px solid #1215ff; /* Blue */
       border-bottom: 6px solid #1215ff; /* Blue */
       border-radius: 50%;
-      width: 220px;
-      height: 220px;
+      width: 240px;
+      height: 240px;
     }
 
     @keyframes spin {
@@ -216,7 +216,7 @@
     <div id="blog" class="light-wrapper">
       <div class="container inner">
         <div class="title">
-          <h2 style="position: relative;right: 100px" class="section-title text-center">Upload A Resume or Job Opening</h2>
+          <h2 id="changingText" style="position: relative;right: 100px" class="section-title text-center">Upload A Job Opening</h2>
         </div>
         
         <div class="row">
@@ -242,21 +242,43 @@
             </div>
           
           </form>-->
-          <div id="popo" class="light-wrapper">
-            <form id="uploadForm" enctype="multipart/form-data">
-              <input type="file" name="upfile" value="" id="pdfFile">
-            </form>
-            <button onclick="post_form()" id="submitForm">submit</button>
-            <div id="showAfterSubmit">
-              <div id="loaderProgress" class="loader"></div>
-              <div id="inProgress">Please wait ...</div>
+
+          <div>
+            <div id="formUploadDiv" class="col-md-6 light-wrapper">
+              
+              <form id="uploadForm" enctype="multipart/form-data">
+                <input type="file" name="upfile" value="">
+              </form>
+              <button onclick="post_form()" id="submitForm">Submit Resume</button>
+              <div id="showAfterProgressForm">
+                <div class="loader"></div>
+                <div class="loaderText">Uploading ...</div>
+              </div>
+              <div id="showAfterDoneForm">
+                <div class="loaderStatic"></div>
+                <div class="loaderStaticText">Your Resume Score: <span id="resumeScore"></span></div>
+              </div>
             </div>
-            <div id="showAfterDone">
-              <div id="loaderTwoProgress" class="loaderStatic"></div>
-              <div id="inTwoProgress">Your Score is <span id="scoreValue">$$</span></div>
+    
+            <div id="jobUploadDiv" class="col-md-6 light-wrapper">
+      
+              <form id="uploadJob" enctype="multipart/form-data">
+                <input type="file" name="upfile" value="" >
+              </form>
+              <button onclick="post_job()" id="submitJob">Submit Job</button>
+              <div id="showAfterProgressJob">
+                <div class="loader"></div>
+                <div class="loaderText">Uploading ...</div>
+              </div>
+              <div id="showAfterDoneJob">
+                <div class="loaderStatic"></div>
+                <div class="loaderStaticText">Success!!!</div>
+              </div>
             </div>
           </div>
-
+   
+  
+  
           <div id="score"></div>
           <!--<button id="form3upload">hey33333</button>-->
           <!--<canvas style="position: relative;top:80px;right: 300px;" id="the-canvas"></canvas>-->
@@ -321,13 +343,21 @@
 	$('#displayName').text(JSON.parse(localStorage.getItem('userData')).data.name);
 </script>
 <script>
-  let showDone = $("#showAfterDone");
-  showDone.hide();
+  let showDoneForm = $("#showAfterDoneForm");
+  let showProgressForm = $('#showAfterProgressForm');
+  let showDoneJob = $("#showAfterDoneJob");
+  let showProgressJob = $('#showAfterProgressJob');
+  let jobUploadDiv = $("#jobUploadDiv");
+  let formUploadDiv = $("#formUploadDiv");
+  showProgressJob.hide();
+  showDoneJob.hide();
+  showProgressForm.hide();
+  showDoneForm.hide();
+  formUploadDiv.hide();
+  jobUploadDiv.show();
   function post_form(e){
     var formData = new FormData($('#uploadForm')[0]);
-    let showLoader = $("#showAfterSubmit");
-    showDone.hide();
-    showLoader.show();
+    showProgressForm.show();
     $.ajax({
       url: "/upload",
       type: 'POST',
@@ -337,16 +367,37 @@
       success: function (data) {
         console.log(data);
       }
-    }).always(function (data) {
+    }).done(function (data) {
       $.get("/upload/resumeScore",function (data) {
-        showLoader.hide();
-        console.log(showDone.query, showDone);
-        showDone.show();
+        showProgressForm.hide();
+        showDoneForm.show();
+        $("#resumeScore").text(data);
       })
     });
   }
-  $('#form3upload').click(function () {
-    window.location.href = '/uploadRESUME2'
-  })
+  function post_job(e){
+    showProgressJob.show();
+    var jobData = new FormData($('#uploadJob')[0]);
+    $.ajax({
+      url: "/uploadJob",
+      type: 'POST',
+      data: jobData,
+      processData: false,
+      contentType: false,
+      success: function (data) {
+        console.log(data);
+      }
+    }).done(function (data) {
+      setTimeout(()=>{
+        showProgressJob.hide();
+        showDoneJob.show();
+        setTimeout(()=>{
+          formUploadDiv.show();
+          jobUploadDiv.hide();
+          $("#changingText").text("Upload A Resume")
+        },2000);
+      }, 2000);
+    });
+  }
 </script>
 </html>
