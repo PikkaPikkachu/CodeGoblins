@@ -1,4 +1,4 @@
-import nltk
+from nltk import pos_tag, word_tokenize
 from nltk.corpus import wordnet as wn
 from textblob import TextBlob
 import json
@@ -8,8 +8,8 @@ def get_nouns(lines):
     # function to test if something is a noun
     is_noun = lambda pos: pos[:2] == 'NN'
     # do the nlp stuff
-    tokenized = nltk.word_tokenize(lines)
-    nouns = [word.lower() for (word, pos) in nltk.pos_tag(tokenized) if is_noun(pos)]
+    tokenized = word_tokenize(lines)
+    nouns = [word.lower() for (word, pos) in pos_tag(tokenized) if is_noun(pos)]
     return nouns
 
 
