@@ -10,6 +10,7 @@ route.get('/resumeScore', (req,res)=>{
 });
 
 route.post('/',function(req,res){
+	console.log(req.files.upfile);
 	if(req.files.upfile){
 		var file = req.files.upfile,
 			name = file.name,
@@ -75,6 +76,7 @@ function keyWordGenerator(first, second, result){
 		info = data.toString();
 		console.log(info);
     app.locals.resumeScore = info;
+    result.sendStatus(200);
 	});
 	
 	py.stderr.on('data', (data) => {

@@ -203,8 +203,8 @@
           <div id="popo" class="light-wrapper">
           <form id="uploadForm" enctype="multipart/form-data">
             <input type="file" name="upfile" value="" id="pdfFile">
-            <button onclick="post_form()" id="submitForm"></button>
           </form>
+          <button onclick="post_form()" id="submitForm"></button>
           </div>
           
           <div id="score"></div>
@@ -271,15 +271,6 @@
 	$('#displayName').text(JSON.parse(localStorage.getItem('userData')).data.name);
 </script>
 <script>
-  if(localStorage.getItem("flag")) {
-    setTimeout(function () {
-      $.get("/upload/resumeScore",function (data) {
-        console.log(data);
-        localStorage.setItem("flag", false);
-        $('#popo').append(`<div>${data}</div>`)
-      })
-    }, 4000)
-  }
   function post_form(e){
     var formData = new FormData($('#uploadForm')[0]);
     $.ajax({
@@ -292,7 +283,10 @@
         console.log(data);
       }
     }).always(function (data) {
-      localStorage.setItem("flag", true);
+      $.get("/upload/resumeScore",function (data) {
+        localStorage.setItem("flag", false);
+        $('#popo').append(`<div>${data}</div>`)
+      })
     });
   }
   $('#form3upload').click(function () {
