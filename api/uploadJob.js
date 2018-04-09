@@ -13,7 +13,8 @@ route.post('/',function(req,res){
         res.send("Error Occured!")
       }
       else {
-        console.log("job uploaded")
+        console.log("job uploaded");
+        res.sendStatus(200);
       }
     });
   }
